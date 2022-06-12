@@ -150,6 +150,17 @@ class Intern extends Employee {
 
 function init() {
 
+  //? Testing Export Statments
+
+  // module.exports = {
+  //   Employee,
+  //   Manager,
+  //   Intern,
+  //   Engineer
+  // };
+
+  module.exports = Manager, Employee, Engineer, Intern;
+
 
   console.log(`\x1b[46m=============== Profile Auto-Gen ==============\x1b[0m`);
   console.log(`\x1b[46m                    Hello!                     \x1b[0m`);
@@ -161,9 +172,9 @@ function init() {
 
 function test() {
 
-  const empNum1 = new Manager('John', 001, 'JOHN@gmail.com', "CH-7 456");
-  const empNum2 = new Engineer('Dave', 002, 'DAVE@gmail.com', "DesertCow");
-  const empNum3 = new Intern('Pete', 003, 'pistolPete@gmail.com', "Oklahoma State University");
+  const empNum1 = new Manager('John', 1, 'JOHN@gmail.com', "CH-7 456");
+  const empNum2 = new Engineer('Dave', 2, 'DAVE@gmail.com', "DesertCow");
+  const empNum3 = new Intern('Pete', 3, 'pistolPete@gmail.com', "Oklahoma State University");
 
   empNum1.getName();
   empNum1.getEmail();
@@ -195,7 +206,7 @@ init();
 
 //*============== Main ==============
 
-test();
+// test();
 
 console.log(`\x1b[46m=================== Goodbye! ==================\x1b[0m`);
 //*=========== END of MAIN ==========
