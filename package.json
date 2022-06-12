@@ -1,0 +1,28 @@
+{
+  "name": "nodehtmlprofilegenerator",
+  "version": "1.0.0",
+  "description": "<h2 align=\"center\">Object-Oriented Programming Challenge: Team Profile Generator</h2>",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DesertCow/NodeHTMLProfileGenerator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DesertCow/NodeHTMLProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/DesertCow/NodeHTMLProfileGenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^28.1.1"
+  }
+}

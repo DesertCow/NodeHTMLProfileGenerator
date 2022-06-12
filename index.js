@@ -2,12 +2,12 @@
 // Clayton Skaggs 6-14-22
 //
 // - npm install inquirer
-// - npm install request
+// - npm install jest
 
 
 //? Import Statments
 // const fs = require('fs');
-// const inquirer = require('inquirer');
+const inquirer = require('inquirer');
 // const request = require('request');
 
 //!===================== Variable Decleration =====================
