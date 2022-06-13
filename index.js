@@ -177,7 +177,7 @@ async function mainMenu() {
           addTeamMember();
           break;
         case 'View Team Members':
-          viewTeamMembers();
+          viewTeamMembers(finalHTMLArray);
           break;
         case 'Generate HTML':
           generateHTML(finalHTMLArray);
@@ -247,7 +247,8 @@ async function addTeamMember() {
 function generateHTML(final) {
 
   console.log("Generaete HTML");
-  console.log(final);
+  console.log(`\x1b[46m================ HTML Generated! ==============\x1b[0m`);
+  console.log(`\x1b[46m=================== Goodbye! ==================\x1b[0m`);
 
 }
 
@@ -268,8 +269,14 @@ function newEngineer() {
 
       currentUserInput.gitHub = answers.newMemberGitHub;
 
-      console.log("Add new Engineer! = " + currentUserInput.gitHub);
-
+      //console.log("Add new Engineer! = " + currentUserInput.gitHub);
+      console.log("BEFORE: ");
+      console.log(finalHTMLArray);
+      finalHTMLArray.push(currentUserInput);
+      console.log(finalHTMLArray);
+      console.log("After: ");
+      console.log(finalHTMLArray);
+      console.log(`\x1b[43m============= New Engineer Created! ===========\x1b[0m`);
       mainMenu();
 
     })
@@ -293,8 +300,14 @@ function newIntern() {
 
       currentUserInput.school = answers.newMemberSchool;
 
-      console.log("Add new Intern! = " + currentUserInput.school);
+      //console.log("Add new Intern! = " + currentUserInput.school);
 
+      console.log("BEFORE: ");
+      console.log(finalHTMLArray);
+      finalHTMLArray.push(currentUserInput);
+      console.log("After: ");
+      console.log(finalHTMLArray);
+      console.log(`\x1b[43m============= New Intern Created! ===========\x1b[0m`);
       mainMenu();
 
     })
@@ -316,8 +329,12 @@ function newManager() {
 
       currentUserInput.office = answers.newMemberOffice;
 
-      console.log("Add new Manager! = " + currentUserInput.office);
+      //console.log("Add new Manager! = " + currentUserInput.office);
 
+      //console.log("BEFORE: " + finalHTMLArray);
+      finalHTMLArray.push(currentUserInput);
+      //console.log("AFTER: " + finalHTMLArray);
+      console.log(`\x1b[43m============= New Manager Created! ===========\x1b[0m`);
       mainMenu();
 
     })
@@ -325,8 +342,10 @@ function newManager() {
 }
 
 // ?============= viewTeamMembers =============
-function viewTeamMembers() {
+function viewTeamMembers(final) {
 
+  console.log(final);
+  mainMenu();
 }
 
 function init() {
@@ -390,7 +409,6 @@ init();
 mainMenu();
 // test();
 
-console.log(`\x1b[46m=================== Goodbye! ==================\x1b[0m`);
 //*=========== END of MAIN ==========
 
 
