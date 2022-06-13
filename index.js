@@ -146,7 +146,80 @@ class Intern extends Employee {
 
 }
 
+// ?============= getUserInput =============
+async function mainMenu() {
 
+  await 1
+
+  inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'mainMenuChoice',
+        choices: ['Add Team Member', 'View Team Members', 'Generate HTML'],
+        message: "Please Select from the following options",
+      },
+    ])
+    .then(answers => {
+
+      if (answers.mainMenuChoice === "Add Team Member") {
+        console.log("ADD TEAM!");
+        addTeamMember();
+
+      } else if (answers.mainMenuChoice === "View Team Members") {
+        console.log("Print TEAM");
+        viewTeamMembers();
+
+      } else if (answers.mainMenuChoice === "View Team Members") {
+        console.log("Generaete HTML");
+
+      }
+
+    })
+
+};
+
+// ?============= addTeamMember =============
+
+async function addTeamMember() {
+
+  await 1
+
+  inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'newMemberType',
+        choices: ['Manager', 'Engineer', 'Inter'],
+        message: "What type of Employee would you like to add?",
+      },
+      {
+        type: 'input',
+        name: 'newMemberName',
+        message: "Please Enter Name: ",
+      },
+      {
+        type: 'input',
+        name: 'newID',
+        message: "Please Enter ID: ",
+      },
+      {
+        type: 'input',
+        name: 'newMemberEmail',
+        message: "Please Enter Email: ",
+      },
+    ])
+    .then(answers => {
+
+    })
+
+
+
+}
+
+function viewTeamMembers() {
+
+}
 
 function init() {
 
@@ -206,6 +279,7 @@ init();
 
 //*============== Main ==============
 
+mainMenu();
 // test();
 
 console.log(`\x1b[46m=================== Goodbye! ==================\x1b[0m`);
