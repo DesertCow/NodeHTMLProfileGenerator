@@ -4,11 +4,10 @@
   "description": "<h2 align=\"center\">Object-Oriented Programming Challenge: Team Profile Generator</h2>",
   "main": "index.js",
   "directories": {
-    "lib": "lib",
-    "test": "jest"
+    "lib": "lib"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --verbose"
   },
   "repository": {
     "type": "git",

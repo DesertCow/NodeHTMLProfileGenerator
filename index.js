@@ -246,6 +246,12 @@ function viewTeamMembers(final) {
 // ?============= generateHTML =============
 function generateHTML(final) {
 
+  console.log("Number of Employee(s) = " + final.length);
+
+  for (var i = 0; i < final.length; i++) {
+    console.log("I =" + i + " || " + final[i]);
+  }
+
   console.log(final);
   console.log("Generaete HTML");
   console.log(`\x1b[46m================ HTML Generated! ==============\x1b[0m`);
