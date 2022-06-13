@@ -119,10 +119,6 @@ async function addTeamMember() {
     ])
     .then(answers => {
 
-      console.log("Member Type: " + answers.newMemberName);
-      console.log("ID : " + answers.newID);
-      console.log("EMAIL: " + answers.newMemberEmail);
-
       if ((answers.newMemberName !== "") && (answers.newID !== "") && (answers.newMemberEmail !== "")) {
 
         currentUserInput.type = answers.newMemberType;
@@ -142,19 +138,11 @@ async function addTeamMember() {
             break;
         }
 
-
       } else {
         console.log(`\x1b[31m============= ERROR: Empty Input [addTeamMember] ===========\x1b[0m`);
         mainMenu();
       }
-
-
-
-
     })
-
-
-
 }
 
 // ?============= newEngineer =============
@@ -175,11 +163,7 @@ function newEngineer() {
         currentUserInput.gitHub = answers.newMemberGitHub;
         const newEmp = new Engineer(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.gitHub);
 
-
         finalHTMLArray.push(newEmp);
-
-        console.log("After: ");
-        console.log(finalHTMLArray);
 
         console.log(`\x1b[43m============= New Engineer Created! ===========\x1b[0m`);
         mainMenu();
@@ -188,9 +172,7 @@ function newEngineer() {
         console.log(`\x1b[31m============= ERROR: Empty Input [newEngineer] ===========\x1b[0m`);
         mainMenu();
       }
-
     })
-
 }
 
 // ?============= newIntern =============
@@ -213,9 +195,6 @@ function newIntern() {
         const newEmp = new Intern(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.school);
         finalHTMLArray.push(newEmp);
 
-        console.log("After: ");
-        console.log(finalHTMLArray);
-
         console.log(`\x1b[43m============= New Intern Created! ===========\x1b[0m`);
         mainMenu();
 
@@ -223,9 +202,7 @@ function newIntern() {
         console.log(`\x1b[31m============= ERROR: Empty Input [newIntern] ===========\x1b[0m`);
         mainMenu();
       }
-
     })
-
 }
 
 // ?============= newManager =============
@@ -256,10 +233,7 @@ function newManager() {
         console.log(`\x1b[31m============= ERROR: Empty Input [newManager] ===========\x1b[0m`);
         mainMenu();
       }
-
-
     })
-
 }
 
 // ?============= viewTeamMembers =============
@@ -291,35 +265,6 @@ function init() {
 
 }
 
-function test() {
-
-  const empNum1 = new Manager('John', 1, 'JOHN@gmail.com', "CH-7 456");
-  const empNum2 = new Engineer('Dave', 2, 'DAVE@gmail.com', "DesertCow");
-  const empNum3 = new Intern('Pete', 3, 'pistolPete@gmail.com', "Oklahoma State University");
-
-  empNum1.getName();
-  empNum1.getEmail();
-  empNum1.getID();
-  empNum1.getRole();
-  empNum1.getOffice();
-  console.log(`\x1b[43m===============================================\x1b[0m`);
-  empNum2.getName();
-  empNum2.getEmail();
-  empNum2.getID();
-  empNum2.getGitHubName();
-  empNum2.getRole();
-  console.log(`\x1b[43m===============================================\x1b[0m`);
-  empNum3.getName();
-  empNum3.getEmail();
-  empNum3.getID();
-  empNum3.getRole();
-  empNum3.getSchool();
-
-
-
-}
-
-
 //!===================== Init ~ Main =====================
 
 //*============== Init ==============
@@ -328,7 +273,6 @@ init();
 //*============== Main ==============
 
 mainMenu();
-//test();
 
 //*=========== END of MAIN ==========
 

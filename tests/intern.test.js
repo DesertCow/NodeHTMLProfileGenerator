@@ -3,10 +3,9 @@
 //
 
 const Intern = require("../assets/js/intern");
+const intern1 = new Intern('Pete', 3, 'pistolPete@gmail.com', "Oklahoma State University");
 
 // ?============= Intern =============
-
-const intern1 = new Intern('Pete', 3, 'pistolPete@gmail.com', "Oklahoma State University");
 
 test('Intern Manager Name', () => {
   expect(intern1.getName()).toBe("Pete");
@@ -29,3 +28,5 @@ test('Intern Role', () => {
   expect(intern1.getRole()).toBe("Intern");
 
 })
+
+//!========================= EOF =========================
