@@ -12,8 +12,17 @@ const inquirer = require('inquirer');
 
 //!===================== Variable Decleration =====================
 
+let finalHTMLArray = [];
 
-
+let currentUserInput = {
+  "type": "",
+  "name": "",
+  "id": "",
+  "email": "",
+  "office": "",
+  "gitHub": "",
+  "school": "",
+}
 
 //!===================== Functions Section =====================
 
@@ -162,17 +171,17 @@ async function mainMenu() {
     ])
     .then(answers => {
 
-      if (answers.mainMenuChoice === "Add Team Member") {
-        console.log("ADD TEAM!");
-        addTeamMember();
 
-      } else if (answers.mainMenuChoice === "View Team Members") {
-        console.log("Print TEAM");
-        viewTeamMembers();
-
-      } else if (answers.mainMenuChoice === "View Team Members") {
-        console.log("Generaete HTML");
-
+      switch (answers.mainMenuChoice) {
+        case 'Add Team Member':
+          addTeamMember();
+          break;
+        case 'View Team Members':
+          viewTeamMembers();
+          break;
+        case 'Generate HTML':
+          generateHTML(finalHTMLArray);
+          break;
       }
 
     })
@@ -190,7 +199,7 @@ async function addTeamMember() {
       {
         type: 'list',
         name: 'newMemberType',
-        choices: ['Manager', 'Engineer', 'Inter'],
+        choices: ['Manager', 'Engineer', 'Intern'],
         message: "What type of Employee would you like to add?",
       },
       {
@@ -211,12 +220,111 @@ async function addTeamMember() {
     ])
     .then(answers => {
 
+      currentUserInput.type = answers.newMemberType;
+      currentUserInput.name = answers.newMemberName;
+      currentUserInput.id = answers.newID;
+      currentUserInput.email = answers.newMemberEmail;
+
+      switch (answers.newMemberType) {
+        case 'Manager':
+          newManager();
+          break;
+        case 'Engineer':
+          newEngineer();
+          break;
+        case 'Intern':
+          newIntern();
+          break;
+      }
+
     })
 
 
 
 }
 
+// ?============= generateHTML =============
+function generateHTML(final) {
+
+  console.log("Generaete HTML");
+  console.log(final);
+
+}
+
+
+
+// ?============= newEngineer =============
+function newEngineer() {
+
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'newMemberGitHub',
+        message: "Please Enter GitHub UserName: ",
+      },
+    ])
+    .then(answers => {
+
+      currentUserInput.gitHub = answers.newMemberGitHub;
+
+      console.log("Add new Engineer! = " + currentUserInput.gitHub);
+
+      mainMenu();
+
+    })
+
+
+
+}
+
+// ?============= newIntern =============
+function newIntern() {
+
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'newMemberSchool',
+        message: "Please Enter Current School: ",
+      },
+    ])
+    .then(answers => {
+
+      currentUserInput.school = answers.newMemberSchool;
+
+      console.log("Add new Intern! = " + currentUserInput.school);
+
+      mainMenu();
+
+    })
+
+}
+
+// ?============= newManager =============
+function newManager() {
+
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'newMemberOffice',
+        message: "Please Enter Office Number: ",
+      },
+    ])
+    .then(answers => {
+
+      currentUserInput.office = answers.newMemberOffice;
+
+      console.log("Add new Manager! = " + currentUserInput.office);
+
+      mainMenu();
+
+    })
+
+}
+
+// ?============= viewTeamMembers =============
 function viewTeamMembers() {
 
 }

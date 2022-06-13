@@ -43,6 +43,12 @@ test('Manager ID', () => {
 
 })
 
+test('Manager Office', () => {
+  expect(man1.getOffice()).toBe('CH-7 456');
+
+})
+
+
 test('Manager Role', () => {
   expect(man1.getRole()).toBe("Manager");
 
