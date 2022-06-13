@@ -2,7 +2,7 @@
 //
 //
 
-const Employee = require("./assets/js/employee");
+const Employee = require("../assets/js/employee");
 
 // ?============= Employee =============
 
