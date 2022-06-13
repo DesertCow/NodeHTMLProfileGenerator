@@ -157,17 +157,6 @@ async function addTeamMember() {
 
 }
 
-// ?============= generateHTML =============
-function generateHTML(final) {
-
-  console.log("Generaete HTML");
-  console.log(`\x1b[46m================ HTML Generated! ==============\x1b[0m`);
-  console.log(`\x1b[46m=================== Goodbye! ==================\x1b[0m`);
-
-}
-
-
-
 // ?============= newEngineer =============
 function newEngineer() {
 
@@ -184,14 +173,14 @@ function newEngineer() {
       if (answers.newMemberGitHub !== "") {
 
         currentUserInput.gitHub = answers.newMemberGitHub;
+        const newEmp = new Engineer(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.gitHub);
 
-        //console.log("Add new Engineer! = " + currentUserInput.gitHub);
-        console.log("BEFORE: ");
-        console.log(finalHTMLArray);
-        finalHTMLArray.push(currentUserInput);
-        console.log(finalHTMLArray);
+
+        finalHTMLArray.push(newEmp);
+
         console.log("After: ");
         console.log(finalHTMLArray);
+
         console.log(`\x1b[43m============= New Engineer Created! ===========\x1b[0m`);
         mainMenu();
 
@@ -221,13 +210,12 @@ function newIntern() {
 
         currentUserInput.school = answers.newMemberSchool;
 
-        //console.log("Add new Intern! = " + currentUserInput.school);
+        const newEmp = new Intern(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.school);
+        finalHTMLArray.push(newEmp);
 
-        console.log("BEFORE: ");
-        console.log(finalHTMLArray);
-        finalHTMLArray.push(currentUserInput);
         console.log("After: ");
         console.log(finalHTMLArray);
+
         console.log(`\x1b[43m============= New Intern Created! ===========\x1b[0m`);
         mainMenu();
 
@@ -257,11 +245,9 @@ function newManager() {
 
         currentUserInput.office = answers.newMemberOffice;
 
-        //console.log("Add new Manager! = " + currentUserInput.office);
+        const newEmp = new Manager(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.office);
+        finalHTMLArray.push(newEmp);
 
-        //console.log("BEFORE: " + finalHTMLArray);
-        finalHTMLArray.push(currentUserInput);
-        //console.log("AFTER: " + finalHTMLArray);
         console.log(`\x1b[43m============= New Manager Created! ===========\x1b[0m`);
         mainMenu();
 
@@ -283,18 +269,18 @@ function viewTeamMembers(final) {
   mainMenu();
 }
 
+// ?============= generateHTML =============
+function generateHTML(final) {
+
+  console.log(final);
+  console.log("Generaete HTML");
+  console.log(`\x1b[46m================ HTML Generated! ==============\x1b[0m`);
+  console.log(`\x1b[46m=================== Goodbye! ==================\x1b[0m`);
+
+}
+
+// *============= INIT =============
 function init() {
-
-  //? Testing Export Statments
-
-  // module.exports = {
-  //   Employee,
-  //   Manager,
-  //   Intern,
-  //   Engineer
-  // };
-
-  // module.exports = Manager, Employee, Engineer, Intern;
 
 
   console.log(`\x1b[46m=============== Profile Auto-Gen ==============\x1b[0m`);
@@ -342,7 +328,7 @@ init();
 //*============== Main ==============
 
 mainMenu();
-// test();
+//test();
 
 //*=========== END of MAIN ==========
 
