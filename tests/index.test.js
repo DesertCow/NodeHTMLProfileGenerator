@@ -1,9 +1,9 @@
 
 
-const Employee = require('./index.js');
-const Manager = require('./index.js');
-const Engineer = require('./index.js');
-const Intern = require('./index.js');
+const Employee = require('../index.js');
+const Manager = require('../index.js');
+const Engineer = require('../index.js');
+const Intern = require('../index.js');
 
 // import { Employee } from "./index.js";
 

@@ -10,6 +10,11 @@
 const inquirer = require('inquirer');
 // const request = require('request');
 
+const Employee = require("./assets/js/employee");
+const Manager = require("./assets/js/manager");
+const Intern = require("./assets/js/intern");
+const Engineer = require("./assets/js/engineer");
+
 //!===================== Variable Decleration =====================
 
 let finalHTMLArray = [];
@@ -24,136 +29,31 @@ let currentUserInput = {
   "school": "",
 }
 
+
+
+// ?============= FunctionNAME =============
+
+//*############## Description ##############
+
+// ?============= FunctionNAME =============
+
+//*############## Description ##############
+
+
+// ?============= FunctionNAME =============
+//*############## Description ##############
+
+
+
+// ?============= FunctionNAME =============
+
+//*############## Description ##############
+//*####################### Description ###########################
+//*####################### Description ###########################
+
+
+
 //!===================== Functions Section =====================
-
-// ?============= FunctionNAME =============
-
-//*############## Description ##############
-
-// ?============= FunctionNAME =============
-
-//*############## Description ##############
-
-
-// ?============= FunctionNAME =============
-//*############## Description ##############
-
-
-
-// ?============= FunctionNAME =============
-
-//*############## Description ##############
-//*####################### Description ###########################
-//*####################### Description ###########################
-
-
-
-//!===================== Class Section =====================
-
-// ?============= Employee CLASS =============
-class Employee {
-
-  constructor(empName, empID, empEmail) {
-    this.empName = empName;
-    this.empID = empID;
-    this.empEmail = empEmail;
-  }
-
-  // Method that returns Name
-  getName() {
-    console.log("Name = " + this.empName);
-    return this.empName;
-
-  };
-
-  getEmail() {
-    console.log("Email = " + this.empEmail);
-    return this.empEmail;
-
-  };
-
-  getID() {
-    console.log("ID = " + this.empID);
-    return this.empID;
-
-  };
-
-  getRole() {
-    console.log("ERROR: Not Assigned (Manager, Engineer, Inter)");
-    return;
-
-  };
-
-}
-
-// ?============= Manager -> Employee =============
-class Manager extends Employee {
-
-  constructor(empName, empID, empEmail, officeNum) {
-    super(empName, empID, empEmail);
-    this.officeNum = officeNum;
-
-  }
-
-  getOffice() {
-    console.log("Manager Office: " + this.officeNum);
-    return this.officeNum;
-
-  };
-
-  getRole() {
-    console.log("Role: Manager");
-    return "Manager";
-
-  };
-
-}
-
-// ?============= Engineer -> Employee =============
-class Engineer extends Employee {
-
-  constructor(empName, empID, empEmail, gitHubName) {
-    super(empName, empID, empEmail);
-    this.gitHubName = gitHubName;
-
-  }
-
-  getGitHubName() {
-    console.log("Engieer GitHub = " + this.gitHubName);
-    return this.gitHubName;
-
-  };
-
-  getRole() {
-    console.log("Role: Engineer");
-    return "Engineer";
-
-  };
-
-}
-
-// ?============= Intern -> Employee =============
-class Intern extends Employee {
-
-  constructor(empName, empID, empEmail, empSchool) {
-    super(empName, empID, empEmail);
-    this.empSchool = empSchool;
-
-  }
-
-  getSchool() {
-    console.log("Intern School = " + this.empSchool);
-    return this.empSchool;
-
-  };
-
-  getRole() {
-    console.log("Role: Intern");
-    return "Intern";
-
-  };
-
-}
 
 // ?============= getUserInput =============
 async function mainMenu() {
@@ -189,7 +89,6 @@ async function mainMenu() {
 };
 
 // ?============= addTeamMember =============
-
 async function addTeamMember() {
 
   await 1
@@ -220,22 +119,37 @@ async function addTeamMember() {
     ])
     .then(answers => {
 
-      currentUserInput.type = answers.newMemberType;
-      currentUserInput.name = answers.newMemberName;
-      currentUserInput.id = answers.newID;
-      currentUserInput.email = answers.newMemberEmail;
+      console.log("Member Type: " + answers.newMemberName);
+      console.log("ID : " + answers.newID);
+      console.log("EMAIL: " + answers.newMemberEmail);
 
-      switch (answers.newMemberType) {
-        case 'Manager':
-          newManager();
-          break;
-        case 'Engineer':
-          newEngineer();
-          break;
-        case 'Intern':
-          newIntern();
-          break;
+      if ((answers.newMemberName !== "") && (answers.newID !== "") && (answers.newMemberEmail !== "")) {
+
+        currentUserInput.type = answers.newMemberType;
+        currentUserInput.name = answers.newMemberName;
+        currentUserInput.id = answers.newID;
+        currentUserInput.email = answers.newMemberEmail;
+
+        switch (answers.newMemberType) {
+          case 'Manager':
+            newManager();
+            break;
+          case 'Engineer':
+            newEngineer();
+            break;
+          case 'Intern':
+            newIntern();
+            break;
+        }
+
+
+      } else {
+        console.log(`\x1b[31m============= ERROR: Empty Input [addTeamMember] ===========\x1b[0m`);
+        mainMenu();
       }
+
+
+
 
     })
 
@@ -267,21 +181,26 @@ function newEngineer() {
     ])
     .then(answers => {
 
-      currentUserInput.gitHub = answers.newMemberGitHub;
+      if (answers.newMemberGitHub !== "") {
 
-      //console.log("Add new Engineer! = " + currentUserInput.gitHub);
-      console.log("BEFORE: ");
-      console.log(finalHTMLArray);
-      finalHTMLArray.push(currentUserInput);
-      console.log(finalHTMLArray);
-      console.log("After: ");
-      console.log(finalHTMLArray);
-      console.log(`\x1b[43m============= New Engineer Created! ===========\x1b[0m`);
-      mainMenu();
+        currentUserInput.gitHub = answers.newMemberGitHub;
+
+        //console.log("Add new Engineer! = " + currentUserInput.gitHub);
+        console.log("BEFORE: ");
+        console.log(finalHTMLArray);
+        finalHTMLArray.push(currentUserInput);
+        console.log(finalHTMLArray);
+        console.log("After: ");
+        console.log(finalHTMLArray);
+        console.log(`\x1b[43m============= New Engineer Created! ===========\x1b[0m`);
+        mainMenu();
+
+      } else {
+        console.log(`\x1b[31m============= ERROR: Empty Input [newEngineer] ===========\x1b[0m`);
+        mainMenu();
+      }
 
     })
-
-
 
 }
 
@@ -298,17 +217,24 @@ function newIntern() {
     ])
     .then(answers => {
 
-      currentUserInput.school = answers.newMemberSchool;
+      if (answers.newMemberSchool !== "") {
 
-      //console.log("Add new Intern! = " + currentUserInput.school);
+        currentUserInput.school = answers.newMemberSchool;
 
-      console.log("BEFORE: ");
-      console.log(finalHTMLArray);
-      finalHTMLArray.push(currentUserInput);
-      console.log("After: ");
-      console.log(finalHTMLArray);
-      console.log(`\x1b[43m============= New Intern Created! ===========\x1b[0m`);
-      mainMenu();
+        //console.log("Add new Intern! = " + currentUserInput.school);
+
+        console.log("BEFORE: ");
+        console.log(finalHTMLArray);
+        finalHTMLArray.push(currentUserInput);
+        console.log("After: ");
+        console.log(finalHTMLArray);
+        console.log(`\x1b[43m============= New Intern Created! ===========\x1b[0m`);
+        mainMenu();
+
+      } else {
+        console.log(`\x1b[31m============= ERROR: Empty Input [newIntern] ===========\x1b[0m`);
+        mainMenu();
+      }
 
     })
 
@@ -327,15 +253,24 @@ function newManager() {
     ])
     .then(answers => {
 
-      currentUserInput.office = answers.newMemberOffice;
+      if (answers.newMemberOffice !== "") {
 
-      //console.log("Add new Manager! = " + currentUserInput.office);
+        currentUserInput.office = answers.newMemberOffice;
 
-      //console.log("BEFORE: " + finalHTMLArray);
-      finalHTMLArray.push(currentUserInput);
-      //console.log("AFTER: " + finalHTMLArray);
-      console.log(`\x1b[43m============= New Manager Created! ===========\x1b[0m`);
-      mainMenu();
+        //console.log("Add new Manager! = " + currentUserInput.office);
+
+        //console.log("BEFORE: " + finalHTMLArray);
+        finalHTMLArray.push(currentUserInput);
+        //console.log("AFTER: " + finalHTMLArray);
+        console.log(`\x1b[43m============= New Manager Created! ===========\x1b[0m`);
+        mainMenu();
+
+      }
+      else {
+        console.log(`\x1b[31m============= ERROR: Empty Input [newManager] ===========\x1b[0m`);
+        mainMenu();
+      }
+
 
     })
 
@@ -359,7 +294,7 @@ function init() {
   //   Engineer
   // };
 
-  module.exports = Manager, Employee, Engineer, Intern;
+  // module.exports = Manager, Employee, Engineer, Intern;
 
 
   console.log(`\x1b[46m=============== Profile Auto-Gen ==============\x1b[0m`);
