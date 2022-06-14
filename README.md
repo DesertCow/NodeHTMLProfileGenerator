@@ -110,11 +110,15 @@ node index.js
 <br>
 
 <h4>How to execute test suite:</h4>
+
 ````
 
 npm test
 
 ````
+
+
+----
 
 <br>
 <br>
