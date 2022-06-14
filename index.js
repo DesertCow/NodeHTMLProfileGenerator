@@ -171,12 +171,8 @@ function newIntern() {
 
         currentUserInput.school = answers.newMemberSchool;
 
-        console.log("SCHOOL ANSWERS ##: " + answers.newMemberSchool);
-
         const newEmp = new Intern(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.school);
         finalHTMLArray.push(newEmp);
-
-        console.log("EMP SCHOOL ##: " + newEmp.empSchool);
 
         console.log(`\x1b[43m============= New Intern Created! ===========\x1b[0m`);
         mainMenu();
