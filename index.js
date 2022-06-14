@@ -160,7 +160,6 @@ function newEngineer() {
 
       if (answers.newMemberGitHub !== "") {
 
-        currentUserInput.gitHub = answers.newMemberGitHub;
         const newEmp = new Engineer(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.gitHub);
 
         finalHTMLArray.push(newEmp);
@@ -249,7 +248,27 @@ function generateHTML(final) {
   console.log("Number of Employee(s) = " + final.length);
 
   for (var i = 0; i < final.length; i++) {
-    console.log("I =" + i + " || " + final[i]);
+
+
+    switch (final[i].role) {
+      case 'Manager':
+        createManagerHTMLCard(final[i]);
+        break;
+      case 'Engineer':
+        createEngineerHTMLCard(final[i]);
+        break;
+      case 'Intern':
+        createInternHTMLCard(final[i]);
+        break;
+    }
+
+    //Name: final[i].empName
+    //Name: final[i].empID
+    //Name: final[i].empEmail
+    //Name: final[i].officeNum
+
+
+    // console.log("I =" + i + " || " + final[i].empName);
   }
 
   console.log(final);
@@ -258,6 +277,40 @@ function generateHTML(final) {
   console.log(`\x1b[46m=================== Goodbye! ==================\x1b[0m`);
 
 }
+
+
+// ?============= createManagerHTMLCard =============
+function createManagerHTMLCard(manager) {
+  console.log("==== Manager ==== ");
+  console.log("Name:" + manager.empName);
+  console.log("ID:" + manager.empID);
+  console.log("Email:" + manager.empEmail);
+  console.log("Office:" + manager.officeNum);
+
+}
+
+// ?============= createEngineerHTMLCard =============
+function createEngineerHTMLCard(engineer) {
+
+  console.log("==== Engineer ==== ");
+  console.log("Name:" + engineer.empName);
+  console.log("ID:" + engineer.empID);
+  console.log("Email:" + engineer.empEmail);
+  console.log("GitHub:" + engineer.gitHub);
+
+}
+
+// ?============= createInternHTMLCard =============
+function createInternHTMLCard(intern) {
+
+  console.log("==== Intern ==== ");
+  console.log("Name:" + intern.empName);
+  console.log("ID:" + intern.empID);
+  console.log("Email:" + intern.empEmail);
+  console.log("School:" + intern.school);
+
+}
+
 
 // *============= INIT =============
 function init() {

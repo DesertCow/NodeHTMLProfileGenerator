@@ -10,7 +10,7 @@ class Manager extends Employee {
   constructor(empName, empID, empEmail, officeNum) {
     super(empName, empID, empEmail);
     this.officeNum = officeNum;
-
+    this.role = "Manager";
   }
 
   getOffice() {

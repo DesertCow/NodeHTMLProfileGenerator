@@ -10,6 +10,8 @@ class Intern extends Employee {
   constructor(empName, empID, empEmail, empSchool) {
     super(empName, empID, empEmail);
     this.empSchool = empSchool;
+    this.role = "Intern";
+
 
   }
 

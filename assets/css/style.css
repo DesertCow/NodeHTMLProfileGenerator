@@ -1,0 +1,115 @@
+:root {
+  --headerBG: #EF7F88;
+  --main-bg-color: #A8DADC;
+  --cardBG: #457B9D;
+  --footerBG: #1D3557;
+  --whiteMatch: #F1FAEE;
+  
+}
+
+
+/* ================ Body ================  */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1;
+  background-color: var(--main-bg-color);
+}
+
+/* ================ Header ================  */
+
+.titleBox { */
+  display: flex;
+  /* background: linear-gradient(to right,var(--fadeStart),var(--fadeEnd)); */
+  background: var(--headerBG);
+  min-height: 250px;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  /* margin: 100px; */
+  /* padding: 50px; */
+  width: 100%;
+}
+
+
+/* ================ Team Members ================  */
+
+manager {
+  height: 100px;
+  padding: 40px;
+  margin: 50px;
+  text-align: center;
+  background: #13293d;
+  color: var(--whiteMatch);
+  width: 100px;
+  max-width: 100px;
+}
+
+engineer {
+  height: 100px;
+  padding: 40px;
+  margin: 50px;
+  text-align: center;
+  background: #13293d;
+  color: #fff;
+  width: 100px;
+  max-width: 100px;
+}
+
+intern {
+  height: 100px;
+  padding: 40px;
+  margin: 50px;
+  text-align: center;
+  background: #13293d;
+  color: #fff;
+  width: 100px;
+  max-width: 100px;
+}
+
+.card {
+  padding: 15px;
+  margin: 10px;
+
+}
+
+.card-title {
+  font-size: 35px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.managerCard {
+  background: var(--cardBG);
+  margin: 50px;
+}
+
+.engineerCard {
+  background: var(--cardBG);
+  margin: 50px;
+}
+
+.internCard {
+  background: var(--cardBG);
+  margin: 50px;
+}
+
+.card-body {
+  
+  font-size: 25px;
+}
+
+
+
+
+/* ================ Footer ================  */
+.footer {
+  margin-top: 250px;
+  min-height: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  background: var(--footerBG);
+  color: var(--whiteMatch);
+  width: 100%;
+}

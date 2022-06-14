@@ -10,6 +10,7 @@ class Engineer extends Employee {
   constructor(empName, empID, empEmail, gitHubName) {
     super(empName, empID, empEmail);
     this.gitHubName = gitHubName;
+    this.role = "Engineer";
 
   }
 
