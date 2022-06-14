@@ -88,15 +88,22 @@ node index.js
 <h3 align="center">⚡ ⚡ App Demo ⚡ ⚡</h3>
 
 ---
-<h4>Demo Video I</h4><br>
+<h4>App Demo</h4><br>
 
-[![Demo Video Screen Shot](https://img.youtube.com/vi/#VIDEONUMBER/0.jpg)](https://www.youtube.com/watch?v=#VIDEONUMBER)
+[![Demo Video Screen Shot](https://img.youtube.com/vi/jobEJNZbIe8/0.jpg)](https://www.youtube.com/watch?v=jobEJNZbIe8)
 
 <br>
 <br>
-<h4>Demo Video II</h4><br>
+<h4>HTML Output Demo</h4><br>
 
-[![Demo Video Screen Shot](https://img.youtube.com/vi/#VIDEONUMBER/0.jpg)](https://www.youtube.com/watch?v=#VIDEONUMBER)
+[![Demo Video Screen Shot](https://img.youtube.com/vi/-9N2Ick4104/0.jpg)](https://www.youtube.com/watch?v=-9N2Ick4104)
+
+<br>
+<br>
+
+<h4>Test via Jest Demo</h4><br>
+
+[![Demo Video Screen Shot](https://img.youtube.com/vi/kGB5K17IeUk/0.jpg)](https://www.youtube.com/watch?v=kGB5K17IeUk)
 
 <br>
 <br>
