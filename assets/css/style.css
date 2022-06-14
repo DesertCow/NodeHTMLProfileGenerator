@@ -1,9 +1,9 @@
 :root {
-  --headerBG: #EF7F88;
-  --main-bg-color: #A8DADC;
-  --cardBG: #457B9D;
+  --headerBG: #588B8B;
+  --main-bg-color: #FFD5C2;
+  --cardBG: #F28F3B;
   --footerBG: #1D3557;
-  --whiteMatch: #F1FAEE;
+  --whiteMatch: #FFFFFF;
   
 }
 
@@ -99,7 +99,10 @@ intern {
   font-size: 25px;
 }
 
-
+.card-img-top {
+    max-width: 50px;
+    max-height: 150px;
+}
 
 
 /* ================ Footer ================  */
@@ -113,3 +116,4 @@ intern {
   color: var(--whiteMatch);
   width: 100%;
 }
+

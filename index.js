@@ -167,6 +167,8 @@ function newEngineer() {
 
       if (answers.newMemberGitHub !== "") {
 
+        currentUserInput.gitHub = answers.newMemberGitHub;
+
         const newEmp = new Engineer(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.gitHub);
 
         finalHTMLArray.push(newEmp);
@@ -198,8 +200,12 @@ function newIntern() {
 
         currentUserInput.school = answers.newMemberSchool;
 
+        console.log("SCHOOL ANSWERS ##: " + answers.newMemberSchool);
+
         const newEmp = new Intern(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.school);
         finalHTMLArray.push(newEmp);
+
+        console.log("EMP SCHOOL ##: " + newEmp.empSchool);
 
         console.log(`\x1b[43m============= New Intern Created! ===========\x1b[0m`);
         mainMenu();
@@ -256,6 +262,9 @@ async function generateHTML(final) {
 
   fs.appendFile('team.html', `${headerHTML}\n`, () => { });
 
+  // Make Header has been written before adding cards
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
   for (var i = 0; i < final.length; i++) {
 
 
@@ -282,7 +291,7 @@ async function generateHTML(final) {
   //console.log(final);
 
   // Bug to wait for all writes to complete before closing out file
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  await new Promise(resolve => setTimeout(resolve, 1000));
 
   fs.appendFile('team.html', `${footerHTML}`, () => { });
 
@@ -295,15 +304,15 @@ async function generateHTML(final) {
 // ?============= createManagerHTMLCard =============
 function createManagerHTMLCard(manager) {
 
-  let logoLink = "";
+  let logoLink = "./assets/img/Manager_Icon.png";
 
   let html = `    <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
         <h3 class="card-title">${manager.empName}</h3>
           <img class="card-img-top" src="${logoLink}" alt="Manager Type Logo">
             <div class="card-body">
-              <h5 class="">ID:${manager.empID} </h5>
-              <h5 class="">Email:${manager.empEmail} </h5>
-              <h5 class="">Office:${manager.officeNum} </h5>
+              <h5 class="mb-2">ID:${manager.empID} </h5>
+              <h5 class="mb-2"><a href = "mailto: ${manager.empEmail}">${manager.empEmail}</a></h5>
+              <h5 class="mb-2">Office:${manager.officeNum} </h5>
             </p>
           </div>
         </div > `
@@ -316,21 +325,16 @@ function createManagerHTMLCard(manager) {
 // ?============= createEngineerHTMLCard =============
 function createEngineerHTMLCard(engineer) {
 
-  // console.log("==== Engineer ==== ");
-  // console.log("Name:" + engineer.empName);
-  // console.log("ID:" + engineer.empID);
-  // console.log("Email:" + engineer.empEmail);
-  // console.log("GitHub:" + engineer.gitHub);
-
-  let logoLink = "";
+  let logoLink = "./assets/img/ENGR_Icon.png";
 
   let html = `    <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
         <h3 class="card-title">${engineer.empName}</h3>
           <img class="card-img-top" src="${logoLink}" alt="Engineer Type Logo">
             <div class="card-body">
-              <h5 class="">ID:${engineer.empID} </h5>
-              <h5 class="">Email:${engineer.empEmail} </h5>
-              <h5 class="">GitHub:${engineer.gitHubName} </h5>
+              <h5 class="mb-2">ID:${engineer.empID} </h5>
+              <h5 class="mb-2"><a href = "mailto: ${engineer.empEmail}">${engineer.empEmail}</a></h5>
+              <h5 class="mb-2"><a href ='https://github.com/${engineer.gitHubName} ' target="_blank">${engineer.gitHubName}</a></h5>
+              
             </p>
           </div>
         </div > `
@@ -340,24 +344,21 @@ function createEngineerHTMLCard(engineer) {
 
 }
 
+
 // ?============= createInternHTMLCard =============
 function createInternHTMLCard(intern) {
 
-  // console.log("==== Intern ==== ");
-  // console.log("Name:" + intern.empName);
-  // console.log("ID:" + intern.empID);
-  // console.log("Email:" + intern.empEmail);
-  // console.log("School:" + intern.school);
+  let University = intern.empSchool;
 
-  let logoLink = "";
+  let logoLink = "./assets/img/Intern_Icon.png";
 
   let html = `    <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
         <h3 class="card-title">${intern.empName}</h3>
           <img class="card-img-top" src="${logoLink}" alt="Intern Type Logo">
             <div class="card-body">
-              <h5 class="">ID:${intern.empID} </h5>
-              <h5 class="">Email:${intern.empEmail} </h5>
-              <h5 class="">School:${intern.empschool} </h5>
+              <h5 class="mb-2">ID:${intern.empID} </h5>
+              <h5 class="mb-2"><a href = "mailto: ${intern.empEmail} ">${intern.empEmail} </a></h5>
+              <h5 class="mb-2">School: ${University} </h5>
             </p>
           </div>
         </div > `
