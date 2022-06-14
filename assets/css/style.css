@@ -8,26 +8,24 @@
 }
 
 
-/* ================ Body ================  */
+/* ==================== Body ====================  */
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1;
   background-color: var(--main-bg-color);
 }
 
-/* ================ Header ================  */
+
+/* =================== Header ===================  */
 
 .titleBox { */
   display: flex;
-  /* background: linear-gradient(to right,var(--fadeStart),var(--fadeEnd)); */
   background: var(--headerBG);
   min-height: 250px;
   justify-content: center;
   align-items: center;
   font-size: 80px;
-  /* margin: 100px; */
-  /* padding: 50px; */
   width: 100%;
 }
 
@@ -97,6 +95,7 @@ intern {
 .card-body {
   
   font-size: 25px;
+  /* margin-left: -90px; */
 }
 
 .card-img-top {
@@ -105,7 +104,8 @@ intern {
 }
 
 
-/* ================ Footer ================  */
+/* =================== Footer ===================  */
+
 .footer {
   margin-top: 250px;
   min-height: 40px;

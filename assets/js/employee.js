@@ -11,21 +11,17 @@ class Employee {
     this.empEmail = empEmail;
   }
 
-  // Method that returns Name
   getName() {
-    console.log("Name = " + this.empName);
     return this.empName;
 
   };
 
   getEmail() {
-    console.log("Email = " + this.empEmail);
     return this.empEmail;
 
   };
 
   getID() {
-    console.log("ID = " + this.empID);
     return this.empID;
 
   };

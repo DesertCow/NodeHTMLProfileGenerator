@@ -11,19 +11,14 @@ class Engineer extends Employee {
     super(empName, empID, empEmail);
     this.gitHubName = gitHubName;
     this.role = "Engineer";
-
   }
 
   getGitHubName() {
-    console.log("Engieer GitHub = " + this.gitHubName);
     return this.gitHubName;
-
   };
 
   getRole() {
-    console.log("Role: Engineer");
     return "Engineer";
-
   };
 
 }

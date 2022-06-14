@@ -27,6 +27,8 @@ Execute by running the following command:
 ````
 git clone git@github.com:DesertCow/NodeHTMLProfileGenerator.git
 cd NodeHTMLProfileGenerator/
+npm init -y
+npm i
 node index.js
 ````
 

@@ -12,11 +12,11 @@ describe("Intern Class Tests", () => {
     expect(intern1.getName()).toBe("Pete");
   })
 
-  test('Intern Manager Email', () => {
+  test('Intern Email', () => {
     expect(intern1.getEmail()).toBe('pistolPete@gmail.com');
   })
 
-  test('Intern Manager ID', () => {
+  test('Intern ID', () => {
     expect(intern1.getID()).toBe(3);
 
   })
@@ -29,5 +29,7 @@ describe("Intern Class Tests", () => {
     expect(intern1.getRole()).toBe("Intern");
 
   })
+
 });
-//!========================= EOF =========================
+
+// !========================= EOF =========================
