@@ -3,31 +3,33 @@
 //
 
 const Engineer = require("../assets/js/engineer");
-const engr1 = new Engineer('Dave', 2, 'DAVE@gmail.com', "DesertCow");
+const engr1 = new Engineer('Dave', 2, 'DAVE@gmail.com', "Dave2526");
 
 // ?============= Engineer =============
 
 describe("Engineer Class Tests", () => {
-  test('Engineer Manager Name', () => {
+  test('Engineer Name', () => {
     expect(engr1.getName()).toBe("Dave");
   })
 
-  test('Engineer Manager Email', () => {
+  test('Engineer Email', () => {
     expect(engr1.getEmail()).toBe('DAVE@gmail.com');
   })
 
-  test('Engineer Manager ID', () => {
+  test('Engineer ID', () => {
     expect(engr1.getID()).toBe(2);
 
   })
 
   test('Engineer GitHub', () => {
-    expect(engr1.getGitHubName()).toBe("DesertCow");
+    expect(engr1.getGitHubName()).toBe("Dave2526");
   })
 
   test('Engineer Role', () => {
     expect(engr1.getRole()).toBe("Engineer");
 
   })
+
 });
+
 //!========================= EOF =========================

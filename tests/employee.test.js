@@ -20,5 +20,7 @@ describe("Employee Class Tests", () => {
     expect(empNum1.getID()).toBe(1);
 
   })
+
 });
+
 //!========================= EOF =========================

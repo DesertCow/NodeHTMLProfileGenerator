@@ -11,20 +11,14 @@ class Intern extends Employee {
     super(empName, empID, empEmail);
     this.empSchool = empSchool;
     this.role = "Intern";
-
-
   }
 
   getSchool() {
-    console.log("Intern School = " + this.empSchool);
     return this.empSchool;
-
   };
 
   getRole() {
-    console.log("Role: Intern");
     return "Intern";
-
   };
 
 }

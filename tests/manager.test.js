@@ -26,7 +26,6 @@ describe("Manager Class Tests", () => {
 
   })
 
-
   test('Manager Role', () => {
     expect(man1.getRole()).toBe("Manager");
 

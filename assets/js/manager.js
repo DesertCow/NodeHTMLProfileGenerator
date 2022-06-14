@@ -14,15 +14,11 @@ class Manager extends Employee {
   }
 
   getOffice() {
-    console.log("Manager Office: " + this.officeNum);
     return this.officeNum;
-
   };
 
   getRole() {
-    console.log("Role: Manager");
     return "Manager";
-
   };
 
 }

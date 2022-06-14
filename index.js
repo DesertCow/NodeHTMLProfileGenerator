@@ -5,20 +5,15 @@
 // - npm install jest
 
 
-//? Import Statments
+//? Import Modules
 const fs = require('fs');
 const inquirer = require('inquirer');
-// const request = require('request');
 
+//? Import Classes
 const Employee = require("./assets/js/employee");
 const Manager = require("./assets/js/manager");
 const Intern = require("./assets/js/intern");
 const Engineer = require("./assets/js/engineer");
-
-//!===================== HTML Page Elements =====================
-
-
-// var rootEl = $('#root');
 
 
 //!===================== Variable Decleration =====================
@@ -34,30 +29,6 @@ let currentUserInput = {
   "gitHub": "",
   "school": "",
 }
-
-
-
-// ?============= FunctionNAME =============
-
-//*############## Description ##############
-
-// ?============= FunctionNAME =============
-
-//*############## Description ##############
-
-
-// ?============= FunctionNAME =============
-//*############## Description ##############
-
-
-
-// ?============= FunctionNAME =============
-
-//*############## Description ##############
-//*####################### Description ###########################
-//*####################### Description ###########################
-
-
 
 //!===================== Functions Section =====================
 
@@ -200,12 +171,8 @@ function newIntern() {
 
         currentUserInput.school = answers.newMemberSchool;
 
-        console.log("SCHOOL ANSWERS ##: " + answers.newMemberSchool);
-
         const newEmp = new Intern(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.school);
         finalHTMLArray.push(newEmp);
-
-        console.log("EMP SCHOOL ##: " + newEmp.empSchool);
 
         console.log(`\x1b[43m============= New Intern Created! ===========\x1b[0m`);
         mainMenu();
@@ -258,15 +225,13 @@ function viewTeamMembers(final) {
 // ?============= generateHTML =============
 async function generateHTML(final) {
 
-  console.log("Number of Employee(s) = " + final.length);
-
+  // Writes HTML Header
   fs.appendFile('team.html', `${headerHTML}\n`, () => { });
 
-  // Make Header has been written before adding cards
+  // TODO: Bug/Workaround to make sure header has been written before adding employee HTML
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   for (var i = 0; i < final.length; i++) {
-
 
     switch (final[i].role) {
       case 'Manager':
@@ -279,27 +244,17 @@ async function generateHTML(final) {
         createInternHTMLCard(final[i]);
         break;
     }
-
-    //Name: final[i].empName
-    //Name: final[i].empID
-    //Name: final[i].empEmail
-    //Name: final[i].officeNum
-
-    // console.log("I =" + i + " || " + final[i].empName);
   }
 
-  //console.log(final);
-
-  // Bug to wait for all writes to complete before closing out file
+  // TODO: Bug to wait for all writes to complete before closing out file
   await new Promise(resolve => setTimeout(resolve, 1000));
 
+  // Writes HTML Footer
   fs.appendFile('team.html', `${footerHTML}`, () => { });
 
   console.log(`\x1b[46m==============  team.HTML Created! ============\x1b[0m`);
   console.log(`\x1b[46m=================== Goodbye! ==================\x1b[0m`);
-
 }
-
 
 // ?============= createManagerHTMLCard =============
 function createManagerHTMLCard(manager) {
@@ -310,16 +265,15 @@ function createManagerHTMLCard(manager) {
         <h3 class="card-title">${manager.empName}</h3>
           <img class="card-img-top" src="${logoLink}" alt="Manager Type Logo">
             <div class="card-body">
-              <h5 class="mb-2">ID:${manager.empID} </h5>
-              <h5 class="mb-2"><a href = "mailto: ${manager.empEmail}">${manager.empEmail}</a></h5>
-              <h5 class="mb-2">Office:${manager.officeNum} </h5>
+              <h5 class="mb-2">ID: ${manager.empID} </h5>
+              <h5 class="mb-2">Email: <a href = "mailto: ${manager.empEmail}">${manager.empEmail}</a></h5>
+              <h5 class="mb-2">Office: ${manager.officeNum} </h5>
             </p>
           </div>
         </div > `
 
-
+  // Write Manager HTML Block
   fs.appendFile('team.html', `${html}\n`, () => { });
-
 };
 
 // ?============= createEngineerHTMLCard =============
@@ -331,19 +285,17 @@ function createEngineerHTMLCard(engineer) {
         <h3 class="card-title">${engineer.empName}</h3>
           <img class="card-img-top" src="${logoLink}" alt="Engineer Type Logo">
             <div class="card-body">
-              <h5 class="mb-2">ID:${engineer.empID} </h5>
-              <h5 class="mb-2"><a href = "mailto: ${engineer.empEmail}">${engineer.empEmail}</a></h5>
-              <h5 class="mb-2"><a href ='https://github.com/${engineer.gitHubName} ' target="_blank">${engineer.gitHubName}</a></h5>
+              <h5 class="mb-2">ID: ${engineer.empID} </h5>
+              <h5 class="mb-2">Email: <a href = "mailto: ${engineer.empEmail}">${engineer.empEmail}</a></h5>
+              <h5 class="mb-2">GitHub Profile: <a href ='https://github.com/${engineer.gitHubName} ' target="_blank">${engineer.gitHubName}</a></h5>
               
             </p>
           </div>
         </div > `
 
-
+  // Write Engineer HTML Block
   fs.appendFile('team.html', `${html}\n`, () => { });
-
 }
-
 
 // ?============= createInternHTMLCard =============
 function createInternHTMLCard(intern) {
@@ -356,19 +308,19 @@ function createInternHTMLCard(intern) {
         <h3 class="card-title">${intern.empName}</h3>
           <img class="card-img-top" src="${logoLink}" alt="Intern Type Logo">
             <div class="card-body">
-              <h5 class="mb-2">ID:${intern.empID} </h5>
-              <h5 class="mb-2"><a href = "mailto: ${intern.empEmail} ">${intern.empEmail} </a></h5>
+              <h5 class="mb-2">ID: ${intern.empID} </h5>
+              <h5 class="mb-2">Email: <a href = "mailto: ${intern.empEmail} ">${intern.empEmail} </a></h5>
               <h5 class="mb-2">School: ${University} </h5>
             </p>
           </div>
         </div > `
 
-
+  // Write Intern HTML Block
   fs.appendFile('team.html', `${html}\n`, () => { });
 
 }
 
-// ?============= BASE HTML Blocks =============
+// ?============= HEADER + FOOTER HTML Blocks =============
 
 let headerHTML = `<!DOCTYPE html>
 <html lang="en">
@@ -411,16 +363,13 @@ let footerHTML = `  </div>
 </html>`
 
 
-// *============= INIT =============
+// ?============= init =============
 function init() {
-
 
   console.log(`\x1b[46m=============== Profile Auto-Gen ==============\x1b[0m`);
   console.log(`\x1b[46m                    Hello!                     \x1b[0m`);
   console.log(`\x1b[46mWelcome to the Profile Auto-Gen HTML Generator!\x1b[0m`);
-
-  console.log(`\x1b[43m=============== Init Complete! ================\x1b[0m`);
-
+  // console.log(`\x1b[43m=============== Init Complete! ================\x1b[0m`);
 }
 
 //!===================== Init ~ Main =====================
