@@ -6,7 +6,7 @@
 
 
 //? Import Statments
-// const fs = require('fs');
+const fs = require('fs');
 const inquirer = require('inquirer');
 // const request = require('request');
 
@@ -14,6 +14,12 @@ const Employee = require("./assets/js/employee");
 const Manager = require("./assets/js/manager");
 const Intern = require("./assets/js/intern");
 const Engineer = require("./assets/js/engineer");
+
+//!===================== HTML Page Elements =====================
+
+
+// var rootEl = $('#root');
+
 
 //!===================== Variable Decleration =====================
 
@@ -83,6 +89,7 @@ async function mainMenu() {
           generateHTML(finalHTMLArray);
           break;
       }
+
 
     })
 
@@ -160,6 +167,8 @@ function newEngineer() {
 
       if (answers.newMemberGitHub !== "") {
 
+        currentUserInput.gitHub = answers.newMemberGitHub;
+
         const newEmp = new Engineer(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.gitHub);
 
         finalHTMLArray.push(newEmp);
@@ -191,8 +200,12 @@ function newIntern() {
 
         currentUserInput.school = answers.newMemberSchool;
 
+        console.log("SCHOOL ANSWERS ##: " + answers.newMemberSchool);
+
         const newEmp = new Intern(currentUserInput.name, currentUserInput.id, currentUserInput.email, currentUserInput.school);
         finalHTMLArray.push(newEmp);
+
+        console.log("EMP SCHOOL ##: " + newEmp.empSchool);
 
         console.log(`\x1b[43m============= New Intern Created! ===========\x1b[0m`);
         mainMenu();
@@ -243,9 +256,14 @@ function viewTeamMembers(final) {
 }
 
 // ?============= generateHTML =============
-function generateHTML(final) {
+async function generateHTML(final) {
 
   console.log("Number of Employee(s) = " + final.length);
+
+  fs.appendFile('team.html', `${headerHTML}\n`, () => { });
+
+  // Make Header has been written before adding cards
+  await new Promise(resolve => setTimeout(resolve, 1000));
 
   for (var i = 0; i < final.length; i++) {
 
@@ -267,13 +285,17 @@ function generateHTML(final) {
     //Name: final[i].empEmail
     //Name: final[i].officeNum
 
-
     // console.log("I =" + i + " || " + final[i].empName);
   }
 
-  console.log(final);
-  console.log("Generaete HTML");
-  console.log(`\x1b[46m================ HTML Generated! ==============\x1b[0m`);
+  //console.log(final);
+
+  // Bug to wait for all writes to complete before closing out file
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  fs.appendFile('team.html', `${footerHTML}`, () => { });
+
+  console.log(`\x1b[46m==============  team.HTML Created! ============\x1b[0m`);
   console.log(`\x1b[46m=================== Goodbye! ==================\x1b[0m`);
 
 }
@@ -281,35 +303,112 @@ function generateHTML(final) {
 
 // ?============= createManagerHTMLCard =============
 function createManagerHTMLCard(manager) {
-  console.log("==== Manager ==== ");
-  console.log("Name:" + manager.empName);
-  console.log("ID:" + manager.empID);
-  console.log("Email:" + manager.empEmail);
-  console.log("Office:" + manager.officeNum);
 
-}
+  let logoLink = "./assets/img/Manager_Icon.png";
+
+  let html = `    <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
+        <h3 class="card-title">${manager.empName}</h3>
+          <img class="card-img-top" src="${logoLink}" alt="Manager Type Logo">
+            <div class="card-body">
+              <h5 class="mb-2">ID:${manager.empID} </h5>
+              <h5 class="mb-2"><a href = "mailto: ${manager.empEmail}">${manager.empEmail}</a></h5>
+              <h5 class="mb-2">Office:${manager.officeNum} </h5>
+            </p>
+          </div>
+        </div > `
+
+
+  fs.appendFile('team.html', `${html}\n`, () => { });
+
+};
 
 // ?============= createEngineerHTMLCard =============
 function createEngineerHTMLCard(engineer) {
 
-  console.log("==== Engineer ==== ");
-  console.log("Name:" + engineer.empName);
-  console.log("ID:" + engineer.empID);
-  console.log("Email:" + engineer.empEmail);
-  console.log("GitHub:" + engineer.gitHub);
+  let logoLink = "./assets/img/ENGR_Icon.png";
+
+  let html = `    <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
+        <h3 class="card-title">${engineer.empName}</h3>
+          <img class="card-img-top" src="${logoLink}" alt="Engineer Type Logo">
+            <div class="card-body">
+              <h5 class="mb-2">ID:${engineer.empID} </h5>
+              <h5 class="mb-2"><a href = "mailto: ${engineer.empEmail}">${engineer.empEmail}</a></h5>
+              <h5 class="mb-2"><a href ='https://github.com/${engineer.gitHubName} ' target="_blank">${engineer.gitHubName}</a></h5>
+              
+            </p>
+          </div>
+        </div > `
+
+
+  fs.appendFile('team.html', `${html}\n`, () => { });
 
 }
+
 
 // ?============= createInternHTMLCard =============
 function createInternHTMLCard(intern) {
 
-  console.log("==== Intern ==== ");
-  console.log("Name:" + intern.empName);
-  console.log("ID:" + intern.empID);
-  console.log("Email:" + intern.empEmail);
-  console.log("School:" + intern.school);
+  let University = intern.empSchool;
+
+  let logoLink = "./assets/img/Intern_Icon.png";
+
+  let html = `    <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
+        <h3 class="card-title">${intern.empName}</h3>
+          <img class="card-img-top" src="${logoLink}" alt="Intern Type Logo">
+            <div class="card-body">
+              <h5 class="mb-2">ID:${intern.empID} </h5>
+              <h5 class="mb-2"><a href = "mailto: ${intern.empEmail} ">${intern.empEmail} </a></h5>
+              <h5 class="mb-2">School: ${University} </h5>
+            </p>
+          </div>
+        </div > `
+
+
+  fs.appendFile('team.html', `${html}\n`, () => { });
 
 }
+
+// ?============= BASE HTML Blocks =============
+
+let headerHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/reset.css" />
+  <title>My Team</title>
+</head>
+<body>
+      <div class="wrapper">
+        <header>
+          <box class="titleBox d-flex align-items-center justify-content-center">
+            <h1>My Team</h1>
+          </box>
+        </header>
+        <teamMembers class="container">
+  <div class="row cardAppendRow">`
+
+let footerHTML = `  </div>
+      </teamMembers>
+        <footer>
+          <ul class="footer align-items-center p-3">
+            <li>
+              <h5>Made by 🌵 Desert-Cow 🐄</h5>
+            </li>
+            <li>
+              <p>&copy; 2022 Monkey See Monkey Do LLC.</p>
+            </li>
+          </ul>
+        </footer>
+      </div>
+      <script>
+        <script src="../Index.js"></script>
+      </script>
+</body>
+</html>`
 
 
 // *============= INIT =============

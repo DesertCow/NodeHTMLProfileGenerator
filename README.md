@@ -52,11 +52,11 @@ node index.js
 ---
 <p align="center"> <b>GIVEN</b> a command-line application that accepts user input<br><br></p>
 <p align="left"><b>WHEN</b> I am prompted for my team members and their information<br>
-❌  THEN an HTML file is generated that displays a nicely formatted team roster based on user input<br>
+✔️  THEN an HTML file is generated that displays a nicely formatted team roster based on user input<br>
 <b>WHEN</b> I click on an email address in the HTML<br>
-❌  THEN my default email program opens and populates the TO field of the email with the address<br>
+✔️  THEN my default email program opens and populates the TO field of the email with the address<br>
 <b>WHEN</b> I click on the GitHub username<br>
-❌  THEN that GitHub profile opens in a new tab<br>
+✔️  THEN that GitHub profile opens in a new tab<br>
 <b>WHEN</b> I start the application<br>
 ✔️  THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number<br>
 <b>WHEN</b> I enter the team manager’s name, employee ID, email address, and office number<br>
@@ -66,7 +66,7 @@ node index.js
 <b>WHEN</b> I select the intern option<br>
 ✔️ THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu<br>
 <b>WHEN</b> I decide to finish building my team<br>
-❌ THEN I exit the application, and the HTML is generated<br>
+✔️ THEN I exit the application, and the HTML is generated<br>
 <br>
 <br>
 <br>
