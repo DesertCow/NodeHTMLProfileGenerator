@@ -90,6 +90,7 @@ async function mainMenu() {
           break;
       }
 
+
     })
 
 };
@@ -275,11 +276,13 @@ async function generateHTML(final) {
     //Name: final[i].empEmail
     //Name: final[i].officeNum
 
-
     // console.log("I =" + i + " || " + final[i].empName);
   }
 
   //console.log(final);
+
+  // Bug to wait for all writes to complete before closing out file
+  await new Promise(resolve => setTimeout(resolve, 2000));
 
   fs.appendFile('team.html', `${footerHTML}`, () => { });
 
@@ -294,16 +297,16 @@ function createManagerHTMLCard(manager) {
 
   let logoLink = "";
 
-  let html = ` <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
-    < h3 class="card-title" >${manager.empName}</ >
-      <img class="card-img-top" src="${logoLink}" alt="Manager Type Logo">
-        <div class="card-body">
-          <h5 class="">ID:${manager.empID} </h5>
-          <h5 class="">Email:${manager.empEmail} </h5>
-          <h5 class="">Office:${manager.officeNum} </h5>
-        </p>
-      </div>
-    </div > `
+  let html = `    <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
+        <h3 class="card-title">${manager.empName}</h3>
+          <img class="card-img-top" src="${logoLink}" alt="Manager Type Logo">
+            <div class="card-body">
+              <h5 class="">ID:${manager.empID} </h5>
+              <h5 class="">Email:${manager.empEmail} </h5>
+              <h5 class="">Office:${manager.officeNum} </h5>
+            </p>
+          </div>
+        </div > `
 
 
   fs.appendFile('team.html', `${html}\n`, () => { });
@@ -321,16 +324,16 @@ function createEngineerHTMLCard(engineer) {
 
   let logoLink = "";
 
-  let html = ` <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
-    < h3 class="card-title" >${engineer.empName}</ >
-      <img class="card-img-top" src="${logoLink}" alt="Engineer Type Logo">
-        <div class="card-body">
-          <h5 class="">ID:${engineer.empID} </h5>
-          <h5 class="">Email:${engineer.empEmail} </h5>
-          <h5 class="">GitHub:${engineer.gitHubName} </h5>
-        </p>
-      </div>
-    </div > `
+  let html = `    <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
+        <h3 class="card-title">${engineer.empName}</h3>
+          <img class="card-img-top" src="${logoLink}" alt="Engineer Type Logo">
+            <div class="card-body">
+              <h5 class="">ID:${engineer.empID} </h5>
+              <h5 class="">Email:${engineer.empEmail} </h5>
+              <h5 class="">GitHub:${engineer.gitHubName} </h5>
+            </p>
+          </div>
+        </div > `
 
 
   fs.appendFile('team.html', `${html}\n`, () => { });
@@ -348,16 +351,16 @@ function createInternHTMLCard(intern) {
 
   let logoLink = "";
 
-  let html = ` <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
-    < h3 class="card-title" >${intern.empName}</ >
-      <img class="card-img-top" src="${logoLink}" alt="Intern Type Logo">
-        <div class="card-body">
-          <h5 class="">ID:${intern.empID} </h5>
-          <h5 class="">Email:${intern.empEmail} </h5>
-          <h5 class="">School:${intern.empschool} </h5>
-        </p>
-      </div>
-    </div > `
+  let html = `    <div class="card col managerCard d-flex align-items-center justify-content-center" style="width: 12rem;">
+        <h3 class="card-title">${intern.empName}</h3>
+          <img class="card-img-top" src="${logoLink}" alt="Intern Type Logo">
+            <div class="card-body">
+              <h5 class="">ID:${intern.empID} </h5>
+              <h5 class="">Email:${intern.empEmail} </h5>
+              <h5 class="">School:${intern.empschool} </h5>
+            </p>
+          </div>
+        </div > `
 
 
   fs.appendFile('team.html', `${html}\n`, () => { });
@@ -384,15 +387,11 @@ let headerHTML = `<!DOCTYPE html>
             <h1>My Team</h1>
           </box>
         </header>
-
         <teamMembers class="container">
-          <div class="row cardAppendRow">`
+  <div class="row cardAppendRow">`
 
-let footerHTML = `</div>
-
-        </teamMembers>
-      
-      
+let footerHTML = `  </div>
+      </teamMembers>
         <footer>
           <ul class="footer align-items-center p-3">
             <li>
@@ -404,11 +403,9 @@ let footerHTML = `</div>
           </ul>
         </footer>
       </div>
-
       <script>
         <script src="../Index.js"></script>
       </script>
-
 </body>
 </html>`
 
