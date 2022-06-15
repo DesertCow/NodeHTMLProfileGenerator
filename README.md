@@ -101,12 +101,6 @@ node index.js
 <br>
 <br>
 
-<h4>Test via Jest Demo</h4><br>
-
-[![Demo Video Screen Shot](https://img.youtube.com/vi/kGB5K17IeUk/0.jpg)](https://www.youtube.com/watch?v=kGB5K17IeUk)
-
-<br>
-<br>
 
 <br>
 <br>
@@ -126,10 +120,13 @@ npm test
 
 ````
 
-
-----
-
 <br>
 <br>
 
+<h4>Test Demo</h4><br>
+
+[![Demo Video Screen Shot](https://img.youtube.com/vi/kGB5K17IeUk/0.jpg)](https://www.youtube.com/watch?v=kGB5K17IeUk)
+
+<br>
+<br>
 
